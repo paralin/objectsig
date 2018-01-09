@@ -1,0 +1,10 @@
+syntax = "proto3";
+package objectsig;
+
+// Signature is a signature of a object hash.
+message Signature {
+  // KeyMultihash is the multihash of the signer's public key.
+  bytes key_multihash = 1;
+  // Signature is the signature of the data.
+  bytes signature = 3;
+}
