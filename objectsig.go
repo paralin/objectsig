@@ -9,7 +9,7 @@ import (
 )
 
 // NewSignature attempts to sign some data.
-func NewSignature(priv crypto.PrivKey, code uint64, data []byte) (*Signature, error) {
+func NewSignature(priv crypto.PrivKey, data []byte) (*Signature, error) {
 	sign, err := priv.Sign(data)
 	if err != nil {
 		return nil, err
@@ -21,7 +21,7 @@ func NewSignature(priv crypto.PrivKey, code uint64, data []byte) (*Signature, er
 		return nil, err
 	}
 
-	kmh, err := mh.Sum(pubKeyBytes, code, -1)
+	kmh, err := mh.Sum(pubKeyBytes, mh.SHA2_256, -1)
 	if err != nil {
 		return nil, err
 	}
